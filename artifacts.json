@@ -1,0 +1,13 @@
+{
+  "artifacts" : [
+    {
+      "DgroupId": "com.demo",
+      "DartifactId" : "logging",
+      "Dversion" : "0.0.1",
+      "Dpackaging": "jar",
+      "DrepositoryId": "maven-releases",
+      "Dfile": "target/logging-0.0.1.jar",
+      "DpomFile": "./pom.xml"
+    }
+  ]
+}

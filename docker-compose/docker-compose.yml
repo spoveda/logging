@@ -1,0 +1,34 @@
+version: "3"
+services:
+  elasticsearch:
+    image: elasticsearch:7.8.0
+    container_name: elasticsearch
+    hostname: elasticsearch
+    environment:
+      - "discovery.type=single-node"
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=algo1234
+      - xpack.security.enabled=true
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - loggingandtracing
+  kibana:
+    image: kibana:7.8.0
+    container_name: kibana
+    hostname: kibana
+    environment:
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=algo1234
+    ports:
+      - 5601:5601
+    links:
+      - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch
+    networks:
+      - loggingandtracing
+networks:
+  loggingandtracing:
+    driver: bridge
